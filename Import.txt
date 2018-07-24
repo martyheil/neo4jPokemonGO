@@ -1,0 +1,20 @@
+(files should be placed in the import folder of the database you are using)
+
+**Import the Gym Nodes**
+
+LOAD CSV WITH HEADERS FROM "file:///Gym.csv" AS row
+CREATE (n:Gym)
+SET n = row
+
+**Import the PokeStop Nodes**
+
+LOAD CSV WITH HEADERS FROM "file:///PokeStop.csv" AS row
+CREATE (n:PokeStop)
+SET n = row
+
+**Import the relationships**
+
+LOAD CSV WITH HEADERS FROM "file:///Link.csv" AS row
+MATCH (a),(b)
+WHERE a.name = row.a and b.name = row.b
+CREATE (a)-[:LINK {distance:row.distance}]->(b)

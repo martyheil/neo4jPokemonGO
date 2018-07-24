@@ -1,0 +1,49 @@
+(make sure APOC library is installed for your database)
+
+**Short Distance**
+A*
+MATCH (a:Gym),(b:Gym)
+WHERE a.name='Insomnia Cookies' and b.name='University of Louisville Fountains'
+CALL apoc.algo.aStar(a, b, 'LINK', 'distance', 'latitude', 'longitude') YIELD path AS path, weight AS weight
+RETURN path, weight
+Dijkstra
+MATCH (a:Gym),(b:Gym)
+WHERE a.name='Insomnia Cookies' and b.name='University of Louisville Fountains'
+CALL apoc.algo.dijkstra(a, b, 'LINK', 'distance') YIELD path AS path, weight AS weight
+RETURN path, weight
+
+**Medium Distance**
+A*
+MATCH (a:Gym),(b:PokeStop)
+WHERE a.name='Insomnia Cookies' and b.name='Charles Parrish Memorial'
+CALL apoc.algo.aStar(a, b, 'LINK', 'distance', 'latitude', 'longitude') YIELD path AS path, weight AS weight
+RETURN path, weight
+Dijkstra
+MATCH (a:Gym),(b:PokeStop)
+WHERE a.name='Insomnia Cookies' and b.name='Charles Parrish Memorial'
+CALL apoc.algo.dijkstra(a, b, 'LINK', 'distance') YIELD path AS path, weight AS weight
+RETURN path, weight
+
+**Long Distance**
+A*
+MATCH (a:Gym),(b:PokeStop)
+WHERE a.name='Insomnia Cookies' and b.name='Eastern Parkway Bridge'
+CALL apoc.algo.aStar(a, b, 'LINK', 'distance', 'latitude', 'longitude') YIELD path AS path, weight AS weight
+RETURN path, weight
+Dijkstra
+MATCH (a:Gym),(b:PokeStop)
+WHERE a.name='Insomnia Cookies' and b.name='Eastern Parkway Bridge'
+CALL apoc.algo.dijkstra(a, b, 'LINK', 'distance') YIELD path AS path, weight AS weight
+RETURN path, weight
+
+**Long Distance #2**
+A*
+MATCH (a:Gym),(b:Gym)
+WHERE a.name='University of Louisville Fountains' and b.name='University of Louisville South Entrance'
+CALL apoc.algo.aStar(a, b, 'LINK', 'distance', 'latitude', 'longitude') YIELD path AS path, weight AS weight
+RETURN path, weight
+Dijkstra
+MATCH (a:Gym),(b:Gym)
+WHERE a.name='University of Louisville Fountains' and b.name='University of Louisville South Entrance'
+CALL apoc.algo.dijkstra(a, b, 'LINK', 'distance') YIELD path AS path, weight AS weight
+RETURN path, weight
